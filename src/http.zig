@@ -25,9 +25,9 @@ const header = struct { []const u8, []const u8 };
 const parse_error = error{ NotAValidMethod, NoPath, FailedUnescape };
 
 fn parse(data: *[server.read_length]u8) parse_error!request {
-    const lines = @constCast(&std.mem.split(u8, data, "\n"));
+    const lines = @constCast(&std.mem.splitSequence(u8, data, "\n"));
 
-    const first_line = @constCast(&std.mem.split(u8, lines.first(), " "));
+    const first_line = @constCast(&std.mem.splitSequence(u8, lines.first(), " "));
 
     const _method = std.meta.stringToEnum(method, first_line.next() orelse return error.NotAValidMethod) orelse return error.NotAValidMethod;
 

@@ -1,0 +1,3 @@
+[submodule "libsam3"]
+	path = libsam3
+	url = https://github.com/i2p/libsam3
